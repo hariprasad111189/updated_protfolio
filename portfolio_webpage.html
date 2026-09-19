@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shyamala Hari Prasad | AI/ML & Data Science Portfolio</title>
+    <!-- Favicon: Custom SVG with user's initials -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a0b0d'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Sora, sans-serif' font-weight='800' font-size='40' fill='%23d4af37'%3ESHP%3C/text%3E%3C/svg%3E">
+    
+    <!-- Google Fonts: Sora (Headings) & IBM Plex Sans (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;800&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"IBM Plex Sans"', 'sans-serif'],
+                        display: ['Sora', 'sans-serif'],
+                    },
+                    colors: {
+                        charcoal: {
+                            950: '#070809',
+                            900: '#0a0b0d',
+                            800: '#14161a',
+                            700: '#1f2228',
+                            600: '#2e333c',
+                            400: '#646f82',
+                        },
+                        gold: {
+                            50: '#fdfbf0',
+                            100: '#fbf5db',
+                            400: '#e1ca7a',
+                            500: '#d4af37', // Custom metallic gold
+                            600: '#b18e27',
+                            700: '#8e6d1c',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth scrolling adjustments & custom animations */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0b0d;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f2228;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d4af37;
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+        .box-glow {
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.03);
+        }
+        .gold-border-gradient {
+            border-image: linear-gradient(to bottom, rgba(212, 175, 55, 0.4), transparent) 1;
+        }
+    </style>
+</head>
+<body class="bg-charcoal-950 text-slate-200 antialiased font-sans selection:bg-gold-500 selection:text-charcoal-950 overflow-x-hidden">
+
+    <!-- Background grid & glow details -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
+        <div class="absolute inset-0 opacity-[0.02]" style="background-image: linear-gradient(rgba(212,175,55,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,0.1) 1px, transparent 1px); background-size: 40px 40px;"></div>
+        <div class="absolute -top-[20%] left-1/2 -translate-x-1/2 w-[800px] h-[600px] rounded-full opacity-20 filter blur-[120px]" style="background: radial-gradient(circle, rgba(212,175,55,0.15) 0%, transparent 70%);"></div>
+        <div class="absolute bottom-1/4 right-[-10%] w-[600px] h-[600px] rounded-full opacity-10 filter blur-[100px]" style="background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 70%);"></div>
+    </div>
+
+    <!-- Top Progress Bar -->
+    <div id="scrollProgress" class="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-gold-600 to-gold-400 z-50 transition-all duration-75" style="width: 0%"></div>
+
+    <!-- Floating Navigation Bar -->
+    <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-40 w-[95%] max-w-5xl transition-all duration-300">
+        <div class="bg-charcoal-900/85 backdrop-blur-md border border-charcoal-700/50 rounded-2xl px-6 py-3 flex items-center justify-between box-glow">
+            <a href="#hero" class="flex items-center gap-2 group">
+                <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-gold-600 to-gold-400 flex items-center justify-center text-charcoal-950 font-display font-extrabold text-sm shadow-[0_0_15px_rgba(212,175,55,0.3)] group-hover:scale-105 transition-transform">S</span>
+                <span class="font-display font-semibold tracking-wider text-white text-sm">shp<span class="text-gold-500">.dev</span></span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-1">
+                <a href="#timeline" class="px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-gold-500 transition-colors">Journey</a>
+                <a href="#projects" class="px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-gold-500 transition-colors">Showcases</a>
+                <a href="#skills" class="px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-gold-500 transition-colors">Superpowers</a>
+                <a href="#metrics" class="px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-gold-500 transition-colors">Achievements</a>
+                <a href="#contact" class="ml-4 px-4 py-2 text-xs font-bold uppercase tracking-wider text-charcoal-950 bg-gradient-to-r from-gold-500 to-gold-400 rounded-xl hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(212,175,55,0.15)] hover:shadow-[0_0_25px_rgba(212,175,55,0.3)]">Get in touch</a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobileMenuBtn" class="md:hidden text-slate-400 hover:text-gold-500 transition-colors p-1" aria-label="Toggle Menu">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden md:hidden mt-2 bg-charcoal-900/95 border border-charcoal-700/50 rounded-xl p-4 flex flex-col gap-3 shadow-2xl backdrop-blur-xl">
+            <a href="#timeline" class="mobile-link text-sm font-semibold tracking-wide text-slate-300 py-1 hover:text-gold-500">Journey Timeline</a>
+            <a href="#projects" class="mobile-link text-sm font-semibold tracking-wide text-slate-300 py-1 hover:text-gold-500">Selected Showcases</a>
+            <a href="#skills" class="mobile-link text-sm font-semibold tracking-wide text-slate-300 py-1 hover:text-gold-500">Skills Matrix</a>
+            <a href="#metrics" class="mobile-link text-sm font-semibold tracking-wide text-slate-300 py-1 hover:text-gold-500">Achievements</a>
+            <a href="#contact" class="mobile-link text-sm font-semibold tracking-wide text-gold-500 py-1">Direct Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero / Intro Header Section -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-28 pb-16 px-6">
+        <div class="max-w-4xl mx-auto text-center relative z-10 flex flex-col items-center">
+            
+            <!-- Dynamic Role Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold-500/10 border border-gold-500/20 text-gold-400 text-xs font-semibold uppercase tracking-widest mb-8 animate-pulse">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                Available for Roles &amp; Internships
+            </div>
+
+            <!-- Main Title / Headline -->
+            <h1 class="font-display font-black text-4xl sm:text-6xl md:text-8xl tracking-tight leading-none mb-6">
+                <span class="text-white block">Shyamala</span>
+                <span class="block text-transparent bg-clip-text bg-gradient-to-r from-gold-400 via-gold-500 to-amber-300 text-glow">
+                    Hari Prasad
+                </span>
+            </h1>
+
+            <!-- Tagline / Bio -->
+            <p class="font-display text-lg sm:text-xl text-slate-300 font-light max-w-2xl leading-relaxed mb-3">
+                Data Scientist &amp; Developer building multi-agent automation workflows, deep computer vision pipelines, and resilient full-stack systems.
+            </p>
+            <p class="text-xs text-slate-500 font-mono tracking-widest uppercase mb-10">
+                B.Tech Data Science · GCET · CGPA 7.9 · Hyderabad, India
+            </p>
+
+            <!-- Interactive Typing Text -->
+            <div class="mb-12 inline-flex items-center gap-2.5 px-5 py-3 rounded-xl bg-charcoal-900 border border-charcoal-700/80 shadow-[inset_0_1px_0_rgba(212,175,55,0.05)]">
+                <span class="text-slate-500 text-xs font-mono">Expertise:</span>
+                <span id="typedWord" class="font-display font-extrabold text-sm sm:text-base text-gold-400 min-w-[120px]">Data Scientist</span>
+                <span class="w-1.5 h-5 bg-gold-500 animate-bounce"></span>
+            </div>
+
+            <!-- Core Action Call to Actions (CTAs) -->
+            <div class="flex flex-wrap gap-4 justify-center">
+                <a href="#projects" class="px-8 py-3.5 bg-gradient-to-r from-gold-500 to-gold-600 text-charcoal-950 font-display font-bold text-sm rounded-xl hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(212,175,55,0.2)] hover:shadow-[0_0_35px_rgba(212,175,55,0.4)] flex items-center gap-2">
+                    <i data-lucide="layout-grid" class="w-4 h-4"></i> Selected Projects
+                </a>
+                <a href="#timeline" class="px-8 py-3.5 border border-charcoal-700 hover:border-gold-500/50 text-slate-300 hover:text-white font-display font-bold text-sm rounded-xl hover:scale-105 active:scale-95 transition-all hover:bg-charcoal-800/20 flex items-center gap-2">
+                    Interactive Journey <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <!-- Subtle Quick Social Hub -->
+            <div class="flex gap-4 mt-16">
+                <a href="https://www.linkedin.com/in/shyamala-hari-prasad-231809325/" target="_blank" class="w-11 h-11 border border-charcoal-800 bg-charcoal-900/60 rounded-xl flex items-center justify-center text-slate-400 hover:text-gold-500 hover:border-gold-500/40 hover:scale-110 active:scale-95 transition-all" aria-label="LinkedIn">
+                    <i data-lucide="linkedin" class="w-5 h-5"></i>
+                </a>
+                <a href="https://github.com/hariprasad111189" target="_blank" class="w-11 h-11 border border-charcoal-800 bg-charcoal-900/60 rounded-xl flex items-center justify-center text-slate-400 hover:text-gold-500 hover:border-gold-500/40 hover:scale-110 active:scale-95 transition-all" aria-label="GitHub">
+                    <i data-lucide="github" class="w-5 h-5"></i>
+                </a>
+                <a href="mailto:shyamalahariprasad11@gmail.com" class="w-11 h-11 border border-charcoal-800 bg-charcoal-900/60 rounded-xl flex items-center justify-center text-slate-400 hover:text-gold-500 hover:border-gold-500/40 hover:scale-110 active:scale-95 transition-all" aria-label="Email">
+                    <i data-lucide="mail" class="w-5 h-5"></i>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Vertical Timeline Journey Section -->
+    <section id="timeline" class="py-24 px-6 border-t border-charcoal-800/30">
+        <div class="max-w-4xl mx-auto">
+            
+            <div class="text-center mb-16">
+                <span class="text-gold-500 font-mono text-xs tracking-[0.25em] uppercase">My Journey</span>
+                <h2 class="font-display font-black text-3xl sm:text-5xl text-white mt-3">Professional Milestones</h2>
+                <p class="text-slate-400 text-sm max-w-md mx-auto mt-2">A timeline mapping out my core experiences, engineering focus, and achievements.</p>
+            </div>
+
+            <!-- Actual Timeline container -->
+            <div class="relative pl-6 sm:pl-10 border-l-2 border-charcoal-800/80 ml-4">
+                
+                <!-- Timeline Event 1: Cantilever Labs -->
+                <div class="timeline-item relative mb-12 group transition-all duration-700 opacity-0 translate-x-10">
+                    <div class="absolute -left-[35px] sm:-left-[51px] top-1.5 w-6 h-6 rounded-lg bg-charcoal-900 border-2 border-gold-500 flex items-center justify-center text-gold-500 transition-transform group-hover:scale-110">
+                        <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
+                    </div>
+                    
+                    <div class="bg-charcoal-900/60 border border-charcoal-800 rounded-2xl p-6 hover:border-gold-500/30 transition-all duration-300">
+                        <span class="text-gold-500 text-xs font-mono font-bold tracking-wider">Present · AI / ML Intern</span>
+                        <h3 class="font-display font-extrabold text-lg text-white mt-1 group-hover:text-gold-500 transition-colors">Cantilever Labs</h3>
+                        <p class="text-slate-400 text-sm mt-3 leading-relaxed">
+                            Focusing on Computer Vision &amp; Natural Language Processing applications utilizing advanced Python frameworks. Optimizing complex deep learning systems for highly reliable edge and cloud deployments.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Event 2: uTest Silver Rating -->
+                <div class="timeline-item relative mb-12 group transition-all duration-700 opacity-0 translate-x-10">
+                    <div class="absolute -left-[35px] sm:-left-[51px] top-1.5 w-6 h-6 rounded-lg bg-charcoal-900 border-2 border-amber-500 flex items-center justify-center text-amber-500 transition-transform group-hover:scale-110">
+                        <i data-lucide="award" class="w-3.5 h-3.5"></i>
+                    </div>
+                    
+                    <div class="bg-charcoal-900/60 border border-charcoal-800 rounded-2xl p-6 hover:border-amber-500/30 transition-all duration-300">
+                        <span class="text-amber-500 text-xs font-mono font-bold tracking-wider">Freelance Software QA · Silver Rated Tester ⭐</span>
+                        <h3 class="font-display font-extrabold text-lg text-white mt-1 group-hover:text-amber-500 transition-colors">uTest Global QA Platform</h3>
+                        <p class="text-slate-400 text-sm mt-3 leading-relaxed">
+                            Ranked Silver Functional Tester worldwide. Documented complex cross-platform edge cases and high-priority bug reports for prominent enterprise applications.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="px-2 py-1 bg-charcoal-800 text-[10px] text-slate-300 font-mono uppercase rounded-md border border-charcoal-700">Tester of the Week (x2)</span>
+                            <span class="px-2 py-1 bg-charcoal-800 text-[10px] text-slate-300 font-mono uppercase rounded-md border border-charcoal-700">Standout Issue Award</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Event 3: Brain O Vision -->
+                <div class="timeline-item relative mb-12 group transition-all duration-700 opacity-0 translate-x-10">
+                    <div class="absolute -left-[35px] sm:-left-[51px] top-1.5 w-6 h-6 rounded-lg bg-charcoal-900 border-2 border-gold-500 flex items-center justify-center text-gold-500 transition-transform group-hover:scale-110">
+                        <i data-lucide="code" class="w-3.5 h-3.5"></i>
+                    </div>
+                    
+                    <div class="bg-charcoal-900/60 border border-charcoal-800 rounded-2xl p-6 hover:border-gold-500/30 transition-all duration-300">
+                        <span class="text-gold-500 text-xs font-mono font-bold tracking-wider">MERN Stack Development Intern</span>
+                        <h3 class="font-display font-extrabold text-lg text-white mt-1 group-hover:text-gold-500 transition-colors">Brain O Vision Solutions</h3>
+                        <p class="text-slate-400 text-sm mt-3 leading-relaxed">
+                            Engineered full-stack features utilizing MongoDB, Express.js, React.js, and Node.js. Optimized backend REST routes, secured server states, and delivered client-facing UI features.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Event 4: Academics -->
+                <div class="timeline-item relative group transition-all duration-700 opacity-0 translate-x-10">
+                    <div class="absolute -left-[35px] sm:-left-[51px] top-1.5 w-6 h-6 rounded-lg bg-charcoal-900 border-2 border-slate-500 flex items-center justify-center text-slate-400 transition-transform group-hover:scale-110">
+                        <i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i>
+                    </div>
+                    
+                    <div class="bg-charcoal-900/60 border border-charcoal-800 rounded-2xl p-6 hover:border-slate-500/30 transition-all duration-300">
+                        <span class="text-slate-400 text-xs font-mono font-bold tracking-wider">Graduating 2027 · B.Tech in Data Science</span>
+                        <h3 class="font-display font-extrabold text-lg text-white mt-1">Geethanjali College of Engineering and Technology (GCET)</h3>
+                        <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+                            Immersive curriculum focusing on computational statistics, analytical algorithm modeling, database systems, and ML engineering. Accumulated cumulative academic GPA of 7.9.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlighted Projects Grid -->
+    <section id="projects" class="py-24 px-6 bg-charcoal-900/40 relative">
+        <div class="max-w-6xl mx-auto">
+            
+            <div class="text-center mb-16">
+                <span class="text-gold-500 font-mono text-xs tracking-[0.25em] uppercase">Showcase</span>
+                <h2 class="font-display font-black text-3xl sm:text-5xl text-white mt-3">Featured Intelligent Systems</h2>
+                <p class="text-slate-400 text-sm max-w-md mx-auto mt-2">Production-grade AI integrations and automation tools built from scratch.</p>
+            </div>
+
+            <!-- Projects Layout -->
+            <div class="grid lg:grid-cols-3 gap-6">
+
+                <!-- Project Card 1: Omni Browser Agent -->
+                <div class="project-card border border-charcoal-800 bg-charcoal-900/70 p-6 rounded-2xl flex flex-col justify-between hover:border-gold-500/30 hover:scale-[1.01] transition-all duration-300 group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="p-2.5 rounded-xl bg-gold-500/10 text-gold-500"><i data-lucide="chrome" class="w-5 h-5"></i></span>
+                            <span class="text-[10px] font-mono font-semibold tracking-wider bg-charcoal-800 text-slate-400 px-2 py-1 rounded-md border border-charcoal-700">AUTOMATION</span>
+                        </div>
+                        <h3 class="font-display font-black text-xl text-white group-hover:text-gold-500 transition-colors">Omni Browser Agent</h3>
+                        <p class="text-slate-400 text-xs mt-1.5 font-mono">Chrome Extension &amp; FastAPI Agent</p>
+                        <p class="text-slate-300 text-sm mt-4 leading-relaxed">
+                            An AI automation system controlling a live Chromium instance through natural language commands. Features secure CDP (Chrome DevTools Protocol) orchestration and a fast API streaming backend.
+                        </p>
+                        <!-- Fallback mechanism highlight -->
+                        <div class="mt-4 bg-charcoal-950 p-3 rounded-lg border border-charcoal-800">
+                            <span class="text-[10px] text-slate-400 font-mono font-bold block uppercase mb-1">Highlighted Core Logic:</span>
+                            <p class="text-[11px] text-slate-400">Features robust automatic Google Gemini to local Ollama fallback paths, secure real-time navigation streaming, and session storage managers.</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-charcoal-800 flex flex-col gap-4">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] px-2.5 py-1 rounded-md bg-charcoal-800 border border-charcoal-700 text-slate-400">FastAPI</span>
+                            <span class="text-[10px] px-2.5 py-1 rounded-md bg-charcoal-800 border border-charcoal-700 text-slate-400">Gemini</span>
+                            <span class="text-[10px] px-2.5 py-1 rounded-md bg-charcoal-800 border border-charcoal-700 text-slate-400">Ollama</span>
+                            <span class="text-[10px] px-2.5 py-1 rounded-md bg-charcoal-800 border border-charcoal-700 text-slate-400">Manifest V3</span>
+                        </div>
+                        <div class="flex gap-3 text-xs font-bold text-slate-300">
+                            <a href="https://github.com/hariprasad111189" target="_blank" class="hover:text-gold-500 transition-colors flex items-center gap-1.5">
+                                <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2: Agentic AI Research Assistant -->
+                <div class="project-card border border-charcoal-800 bg-charcoal-900/70 p-6 rounded-2xl flex flex-col justify-between hover:border-gold-500/30 hover:scale-[1.01] transition-all duration-300 group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="p-2.5 rounded-xl bg-gold-500/10 text-gold-500"><i data-lucide="brain-circuit" class="w-5 h-5"></i></span>
+                            <span class="text-[10px] font-mono font-semibold tracking-wider bg-charcoal-800 text-slate-400 px-2 py-1 rounded-md border border-charcoal-700">MULTI-AGENT</span>
+                        </div>
+                        <h3 class="font-display font-black text-xl text-white group-hover:text-gold-500 transition-colors">Agentic AI Research Assistant</h3>
+                        <p class="text-slate-400 text-xs mt-1.5 font-mono">Enterprise Research AI System</p>
+                        <p class="text-slate-300 text-sm mt-4 leading-relaxed">
+                            Automates comprehensive deep research over the web, arXiv academic API pipelines, and static corporate files. Deploys advanced multivariable reasoning pathways to construct report sheets.
+                        </p>
+                        <!-- Tech Highlight -->
+                        <div class="mt-4 bg-charcoal-950 p-3 rounded-lg border border-charcoal-800">
+                            <span class="text-[10px] text-slate-400 font-mono font-bold block uppercase mb-1">Architecture Highlights:</span>
+                            <p class="text-[11px] text-slate-400">Uses dynamic LangGraph state loops, concurrency wrappers, and RAG execution using Vector ChromaDB for optimized performance.</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-charcoal-800 flex flex-col gap-4">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] px-2.5 py-1 rounded-md bg-charcoal-800 border border-charcoal-700 text-slate-400">LangGraph</span>
+                            <span class="text-[10px] px-2.5 py-1 rounded-md bg-charcoal-800 border border-charcoal-700 text-slate-400">Next.js</span>
+                            <span class="text-[10px] px-2.5 py-1 rounded-md bg-charcoal-800 border border-charcoal-700 text-slate-400">ChromaDB</span>
+                            <span class="text-[10px] px-2.5 py-1 rounded-md bg-charcoal-800 border border-charcoal-700 text-slate-400">FastAPI</span>
+                        </div>
+                        <div class="flex gap-3 text-xs font-bold text-slate-300">
+                            <a href="https://github.com/hariprasad111189" target="_blank" class="hover:text-gold-500 transition-colors flex items-center gap-1.5">
+                                <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3: Sign Language Detection -->
+                <div class="project-card border border-charcoal-800 bg-charcoal-900/70 p-6 rounded-2xl flex flex-col justify-between hover:border-gold-500/30 hover:scale-[1.01] transition-all duration-300 group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="p-2.5 rounded-xl bg-gold-500/10 text-gold-500"><i data-lucide="eye" class="w-5 h-5"></i></span>
+                            <span class="text-[10px] font-mono font-semibold tracking-wider bg-charcoal-800 text-slate-400 px-2 py-1 rounded-md border border-charcoal-700">COMPUTER VISION</span>
+                        </div>
+                        <h3 class="font-display font-black text-xl text-white group-hover:text-gold-500 transition-colors">Sign Language Detection</h3>
+                        <p class="text-slate-400 text-xs mt-1.5 font-mono">Real-time ASL Translator</p>
+                        <p class="text-slate-300 text-sm mt-4 leading-relaxed">
+                            Translates real-time camera ASL (American Sign Language) finger gestures into crisp text output and synthesized natural audio speech using customized Neural Nets.
+                        </p>
+                        <!-- Tech Highlight -->
+                        <div class="mt-4 bg-charcoal-950 p-3 rounded-lg border border-charcoal-800">
+                            <span class="text-[10px] text-slate-400 font-mono font-bold block uppercase mb-1">Model Infrastructure:</span>
+                            <p class="text-[11px] text-slate-400">Engineered with custom OpenCV ingestion pipelines, deep CNN layers, real-time image processing, and Web Speech API integrations.</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-charcoal-800 flex flex-col gap-4">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] px-2.5 py-1 rounded-md bg-charcoal-800 border border-charcoal-700 text-slate-400">Python</span>
+                            <span class="text-[10px] px-2.5 py-1 rounded-md bg-charcoal-800 border border-charcoal-700 text-slate-400">CNN</span>
+                            <span class="text-[10px] px-2.5 py-1 rounded-md bg-charcoal-800 border border-charcoal-700 text-slate-400">OpenCV</span>
+                            <span class="text-[10px] px-2.5 py-1 rounded-md bg-charcoal-800 border border-charcoal-700 text-slate-400">Web Speech</span>
+                        </div>
+                        <div class="flex gap-3 text-xs font-bold text-slate-300">
+                            <a href="https://github.com/hariprasad111189" target="_blank" class="hover:text-gold-500 transition-colors flex items-center gap-1.5">
+                                <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                <!-- Project Card 6: ATS Resume Analyzer -->
+                <div class="project-card border border-charcoal-800 bg-charcoal-900/70 p-6 rounded-2xl flex flex-col justify-between hover:border-gold-500/30 hover:scale-[1.01] transition-all duration-300 group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="p-2.5 rounded-xl bg-gold-500/10 text-gold-500"><i data-lucide="file-text" class="w-5 h-5"></i></span>
+                            <span class="text-[10px] font-mono font-semibold tracking-wider bg-charcoal-800 text-slate-400 px-2 py-1 rounded-md border border-charcoal-700">NLP ENGINE</span>
+                        </div>
+                        <h3 class="font-display font-black text-xl text-white group-hover:text-gold-500 transition-colors">ATS Resume Analyzer</h3>
+                        <p class="text-slate-400 text-xs mt-1.5 font-mono">Parser &amp; Scoring Tool</p>
+                        <p class="text-slate-300 text-sm mt-4 leading-relaxed">
+                            Extracts textual profiles from PDF resumes using rule-based parsing algorithms. Uses term frequency TF-IDF vectors to rate compatibility levels against specific Job Descriptions.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-charcoal-800 flex flex-col gap-4">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] px-2.5 py-1 rounded-md bg-charcoal-800 border border-charcoal-700 text-slate-400">Python</span>
+                            <span class="text-[10px] px-2.5 py-1 rounded-md bg-charcoal-800 border border-charcoal-700 text-slate-400">NLP</span>
+                            <span class="text-[10px] px-2.5 py-1 rounded-md bg-charcoal-800 border border-charcoal-700 text-slate-400">Text Mining</span>
+                            <span class="text-[10px] px-2.5 py-1 rounded-md bg-charcoal-800 border border-charcoal-700 text-slate-400">React.js</span>
+                        </div>
+                        <div class="flex gap-3 text-xs font-bold text-slate-300">
+                            <a href="https://github.com/hariprasad111189" target="_blank" class="hover:text-gold-500 transition-colors flex items-center gap-1.5">
+                                <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Matrix Section -->
+    <section id="skills" class="py-24 px-6 relative">
+        <div class="max-w-6xl mx-auto">
+            
+            <div class="text-center mb-16">
+                <span class="text-gold-500 font-mono text-xs tracking-[0.25em] uppercase">Superpowers</span>
+                <h2 class="font-display font-black text-3xl sm:text-5xl text-white mt-3">Skills Matrix</h2>
+                <p class="text-slate-400 text-sm max-w-md mx-auto mt-2">Tools, core languages, databases, and frameworks utilized in daily projects.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Category 1: Languages -->
+                <div class="bg-charcoal-900 border border-charcoal-800/80 rounded-2xl p-7 hover:border-gold-500/20 transition-all box-glow group">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="w-10 h-10 rounded-xl bg-gold-500/10 text-gold-500 flex items-center justify-center"><i data-lucide="terminal" class="w-5 h-5"></i></span>
+                        <h3 class="font-display font-extrabold text-white text-lg">Languages</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 bg-charcoal-950 text-slate-300 text-xs font-semibold rounded-lg border border-charcoal-800 hover:border-gold-500/30 hover:text-white transition-all">Python</span>
+                        <span class="px-3 py-1.5 bg-charcoal-950 text-slate-300 text-xs font-semibold rounded-lg border border-charcoal-800 hover:border-gold-500/30 hover:text-white transition-all">JavaScript</span>
+                        <span class="px-3 py-1.5 bg-charcoal-950 text-slate-300 text-xs font-semibold rounded-lg border border-charcoal-800 hover:border-gold-500/30 hover:text-white transition-all">Java</span>
+                        <span class="px-3 py-1.5 bg-charcoal-950 text-slate-300 text-xs font-semibold rounded-lg border border-charcoal-800 hover:border-gold-500/30 hover:text-white transition-all">SQL</span>
+                        <span class="px-3 py-1.5 bg-charcoal-950 text-slate-300 text-xs font-semibold rounded-lg border border-charcoal-800 hover:border-gold-500/30 hover:text-white transition-all">HTML5 / CSS3</span>
+                    </div>
+                </div>
+
+                <!-- Category 2: Frameworks & Libraries -->
+                <div class="bg-charcoal-900 border border-charcoal-800/80 rounded-2xl p-7 hover:border-gold-500/20 transition-all box-glow group">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="w-10 h-10 rounded-xl bg-gold-500/10 text-gold-500 flex items-center justify-center"><i data-lucide="layers" class="w-5 h-5"></i></span>
+                        <h3 class="font-display font-extrabold text-white text-lg">Frameworks</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 bg-charcoal-950 text-slate-300 text-xs font-semibold rounded-lg border border-charcoal-800 hover:border-gold-500/30 hover:text-white transition-all">React.js</span>
+                        <span class="px-3 py-1.5 bg-charcoal-950 text-slate-300 text-xs font-semibold rounded-lg border border-charcoal-800 hover:border-gold-500/30 hover:text-white transition-all">Node.js</span>
+                        <span class="px-3 py-1.5 bg-charcoal-950 text-slate-300 text-xs font-semibold rounded-lg border border-charcoal-800 hover:border-gold-500/30 hover:text-white transition-all">Express.js</span>
+                        <span class="px-3 py-1.5 bg-charcoal-950 text-slate-300 text-xs font-semibold rounded-lg border border-charcoal-800 hover:border-gold-500/30 hover:text-white transition-all">Flask</span>
+                        <span class="px-3 py-1.5 bg-charcoal-950 text-slate-300 text-xs font-semibold rounded-lg border border-charcoal-800 hover:border-gold-500/30 hover:text-white transition-all">Scikit-learn</span>
+                        <span class="px-3 py-1.5 bg-charcoal-950 text-slate-300 text-xs font-semibold rounded-lg border border-charcoal-800 hover:border-gold-500/30 hover:text-white transition-all">Pandas</span>
+                        <span class="px-3 py-1.5 bg-charcoal-950 text-slate-300 text-xs font-semibold rounded-lg border border-charcoal-800 hover:border-gold-500/30 hover:text-white transition-all">OpenCV</span>
+                        <span class="px-3 py-1.5 bg-charcoal-950 text-slate-300 text-xs font-semibold rounded-lg border border-charcoal-800 hover:border-gold-500/30 hover:text-white transition-all">LangGraph</span>
+                    </div>
+                </div>
+
+                <!-- Category 3: Databases & Tools -->
+                <div class="bg-charcoal-900 border border-charcoal-800/80 rounded-2xl p-7 hover:border-gold-500/20 transition-all box-glow group">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="w-10 h-10 rounded-xl bg-gold-500/10 text-gold-500 flex items-center justify-center"><i data-lucide="database" class="w-5 h-5"></i></span>
+                        <h3 class="font-display font-extrabold text-white text-lg">Tools &amp; Databases</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 bg-charcoal-950 text-slate-300 text-xs font-semibold rounded-lg border border-charcoal-800 hover:border-gold-500/30 hover:text-white transition-all">MongoDB</span>
+                        <span class="px-3 py-1.5 bg-charcoal-950 text-slate-300 text-xs font-semibold rounded-lg border border-charcoal-800 hover:border-gold-500/30 hover:text-white transition-all">MySQL</span>
+                        <span class="px-3 py-1.5 bg-charcoal-950 text-slate-300 text-xs font-semibold rounded-lg border border-charcoal-800 hover:border-gold-500/30 hover:text-white transition-all">ChromaDB</span>
+                        <span class="px-3 py-1.5 bg-charcoal-950 text-slate-300 text-xs font-semibold rounded-lg border border-charcoal-800 hover:border-gold-500/30 hover:text-white transition-all">Git / GitHub</span>
+                        <span class="px-3 py-1.5 bg-charcoal-950 text-slate-300 text-xs font-semibold rounded-lg border border-charcoal-800 hover:border-gold-500/30 hover:text-white transition-all">Jupyter Notebooks</span>
+                        <span class="px-3 py-1.5 bg-charcoal-950 text-slate-300 text-xs font-semibold rounded-lg border border-charcoal-800 hover:border-gold-500/30 hover:text-white transition-all">Generative AI APIs</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Metrics, Achievements & uTest Highlights -->
+    <section id="metrics" class="py-24 px-6 bg-charcoal-900/40 relative">
+        <div class="max-w-6xl mx-auto">
+            
+            <div class="text-center mb-16">
+                <span class="text-gold-500 font-mono text-xs tracking-[0.25em] uppercase">Metrics</span>
+                <h2 class="font-display font-black text-3xl sm:text-5xl text-white mt-3">Achievements &amp; Stats</h2>
+                <p class="text-slate-400 text-sm max-w-md mx-auto mt-2">Validated statistics from uTest and LeetCode tracking analytical growth.</p>
+            </div>
+
+            <!-- Bento Card Counters -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                
+                <div class="bg-charcoal-900 border border-charcoal-800 rounded-2xl p-6 text-center hover:border-gold-500/20 transition-all">
+                    <span class="text-3xl mb-2 block">⚡</span>
+                    <h4 class="font-display font-black text-3xl text-gold-500 tracking-tight" id="countLeetCode">0</h4>
+                    <p class="text-white text-xs font-semibold mt-1">LeetCode Solved</p>
+                    <p class="text-[10px] text-slate-500 mt-1 font-mono">Graphs, DP, Trees</p>
+                </div>
+
+                <div class="bg-charcoal-900 border border-charcoal-800 rounded-2xl p-6 text-center hover:border-gold-500/20 transition-all">
+                    <span class="text-3xl mb-2 block">✅</span>
+                    <h4 class="font-display font-black text-3xl text-gold-500 tracking-tight" id="countAccuracy">0</h4>
+                    <p class="text-white text-xs font-semibold mt-1">Acceptance Rate</p>
+                    <p class="text-[10px] text-slate-500 mt-1 font-mono">Optimized code</p>
+                </div>
+
+                <div class="bg-charcoal-900 border border-charcoal-800 rounded-2xl p-6 text-center hover:border-gold-500/20 transition-all">
+                    <span class="text-3xl mb-2 block">🥈</span>
+                    <h4 class="font-display font-black text-3xl text-gold-500 tracking-tight">Silver</h4>
+                    <p class="text-white text-xs font-semibold mt-1">uTest Tier Rank</p>
+                    <p class="text-[10px] text-slate-500 mt-1 font-mono">Functional QA Specialist</p>
+                </div>
+
+                <div class="bg-charcoal-900 border border-charcoal-800 rounded-2xl p-6 text-center hover:border-gold-500/20 transition-all">
+                    <span class="text-3xl mb-2 block">🏆</span>
+                    <h4 class="font-display font-black text-3xl text-gold-500 tracking-tight" id="countAwards">0</h4>
+                    <p class="text-white text-xs font-semibold mt-1">Community Awards</p>
+                    <p class="text-[10px] text-slate-500 mt-1 font-mono">Global QA commendations</p>
+                </div>
+
+            </div>
+
+            <!-- Detailed Notable Awards Box -->
+            <div class="bg-charcoal-900/60 border border-gold-500/10 rounded-2xl p-6 sm:p-8 hover:border-gold-500/20 transition-all box-glow">
+                <h3 class="font-display font-bold text-white text-lg mb-6 flex items-center gap-2">
+                    <span class="p-1.5 bg-gold-500/10 text-gold-500 rounded-md"><i data-lucide="medal" class="w-4 h-4"></i></span>
+                    uTest Global Platform Awards
+                </h3>
+                <div class="grid sm:grid-cols-3 gap-4">
+                    
+                    <div class="bg-charcoal-950/60 border border-charcoal-800 rounded-xl p-4 flex items-start gap-3">
+                        <span class="text-xl mt-0.5">⭐</span>
+                        <div>
+                            <h4 class="text-gold-400 text-xs font-bold font-mono tracking-wider">OCTOBER 20, 2025</h4>
+                            <p class="text-white text-sm font-semibold mt-1">Academy Tester of the Week</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-charcoal-950/60 border border-charcoal-800 rounded-xl p-4 flex items-start gap-3">
+                        <span class="text-xl mt-0.5">⭐</span>
+                        <div>
+                            <h4 class="text-gold-400 text-xs font-bold font-mono tracking-wider">DECEMBER 29, 2025</h4>
+                            <p class="text-white text-sm font-semibold mt-1">Academy Tester of the Week</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-charcoal-950/60 border border-charcoal-800 rounded-xl p-4 flex items-start gap-3">
+                        <span class="text-xl mt-0.5">🎯</span>
+                        <div>
+                            <h4 class="text-gold-400 text-xs font-bold font-mono tracking-wider">JANUARY 5, 2026</h4>
+                            <p class="text-white text-sm font-semibold mt-1">Standout Issue Report</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Direct Contact Hub -->
+    <section id="contact" class="py-24 px-6 border-t border-charcoal-800/20 relative">
+        <div class="max-w-4xl mx-auto">
+            
+            <div class="text-center mb-16">
+                <span class="text-gold-500 font-mono text-xs tracking-[0.25em] uppercase">Contact</span>
+                <h2 class="font-display font-black text-3xl sm:text-5xl text-white mt-3">Let's Build Together</h2>
+                <p class="text-slate-400 text-sm max-w-md mx-auto mt-2">Open to prospective developer roles, QA collaborations, and research partnerships.</p>
+            </div>
+
+            <!-- Contact Grid Layout -->
+            <div class="grid md:grid-cols-2 gap-8">
+                
+                <!-- Simple Direct Links Column -->
+                <div class="bg-charcoal-900 border border-charcoal-800 rounded-2xl p-8 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-display font-extrabold text-white text-xl mb-2">Connect Directly</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">Have an exciting internship opening or complex ML model pipeline to build? Feel free to reach out via any preferred platform.</p>
+                        
+                        <div class="flex flex-col gap-4">
+                            
+                            <a href="mailto:shyamalahariprasad11@gmail.com" class="flex items-center gap-4 p-4 bg-charcoal-950/50 border border-charcoal-800 hover:border-gold-500/30 hover:bg-charcoal-950 rounded-xl transition-all group">
+                                <span class="w-10 h-10 rounded-lg bg-gold-500/10 text-gold-500 flex items-center justify-center group-hover:scale-105 transition-all"><i data-lucide="mail" class="w-4 h-4"></i></span>
+                                <div class="min-w-0 flex-1">
+                                    <span class="text-[10px] text-slate-500 font-mono uppercase block">Email Address</span>
+                                    <span class="text-sm font-bold text-white truncate block">shyamalahariprasad11@gmail.com</span>
+                                </div>
+                            </a>
+
+                            <a href="https://www.linkedin.com/in/shyamala-hari-prasad-231809325/" target="_blank" class="flex items-center gap-4 p-4 bg-charcoal-950/50 border border-charcoal-800 hover:border-gold-500/30 hover:bg-charcoal-950 rounded-xl transition-all group">
+                                <span class="w-10 h-10 rounded-lg bg-gold-500/10 text-gold-500 flex items-center justify-center group-hover:scale-105 transition-all"><i data-lucide="linkedin" class="w-4 h-4"></i></span>
+                                <div class="min-w-0 flex-1">
+                                    <span class="text-[10px] text-slate-500 font-mono uppercase block">LinkedIn</span>
+                                    <span class="text-sm font-bold text-white truncate block">shyamala-hari-prasad</span>
+                                </div>
+                            </a>
+
+                            <a href="https://github.com/hariprasad111189" target="_blank" class="flex items-center gap-4 p-4 bg-charcoal-950/50 border border-charcoal-800 hover:border-gold-500/30 hover:bg-charcoal-950 rounded-xl transition-all group">
+                                <span class="w-10 h-10 rounded-lg bg-gold-500/10 text-gold-500 flex items-center justify-center group-hover:scale-105 transition-all"><i data-lucide="github" class="w-4 h-4"></i></span>
+                                <div class="min-w-0 flex-1">
+                                    <span class="text-[10px] text-slate-500 font-mono uppercase block">GitHub Profile</span>
+                                    <span class="text-sm font-bold text-white truncate block">hariprasad111189</span>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clean Messaging Form Column -->
+                <div class="bg-charcoal-900 border border-charcoal-800 rounded-2xl p-8 relative overflow-hidden">
+                    
+                    <!-- Direct Action form via simple mailto encapsulation -->
+                    <form id="contactForm" action="mailto:shyamalahariprasad11@gmail.com" method="GET" enctype="text/plain" class="flex flex-col gap-4">
+                        <h3 class="font-display font-extrabold text-white text-xl mb-2">Send a Message</h3>
+                        
+                        <div>
+                            <label class="text-xs text-slate-500 block mb-1 font-mono uppercase">Your Name</label>
+                            <input type="text" name="subject" required placeholder="Type your name" class="w-full bg-charcoal-950 border border-charcoal-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gold-500 transition-all">
+                        </div>
+
+                        <div>
+                            <label class="text-xs text-slate-500 block mb-1 font-mono uppercase">Direct Message Detail</label>
+                            <textarea name="body" required rows="4" placeholder="What kind of projects or roles are we discussing?" class="w-full bg-charcoal-950 border border-charcoal-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gold-500 resize-none transition-all"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-gold-500 to-gold-600 text-charcoal-950 font-display font-bold text-sm rounded-xl hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(212,175,55,0.15)] flex items-center justify-center gap-2">
+                            Send Message Via Mail <i data-lucide="send" class="w-4 h-4"></i>
+                        </button>
+                    </form>
+                    
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Area -->
+    <footer class="py-12 border-t border-charcoal-900 bg-charcoal-950 text-center relative z-10">
+        <div class="max-w-4xl mx-auto px-6">
+            <p class="font-display font-bold tracking-wider text-sm text-white">SHYAMALA HARI PRASAD</p>
+            <p class="text-xs text-slate-600 font-mono mt-2">
+                &copy; 2026 Shyamala Hari Prasad · B.Tech Data Science (GCET)
+            </p>
+            <p class="text-[10px] text-slate-700 font-mono mt-4">
+                Handcrafted from scratch · Styled with Tailwind CSS
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts & Interaction logic -->
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        /* --- Custom Typing Effect --- */
+        const words = ["Data Scientist", "AI/ML Engineer", "MERN Stack Dev", "QA Specialist"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typedWordElement = document.getElementById("typedWord");
+
+        function typeEffect() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                typedWordElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typedWordElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = 1800; // Pause at end of word
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 300; // Pause before typing next word
+            }
+
+            setTimeout(typeEffect, typeSpeed);
+        }
+        typeEffect();
+
+        /* --- Scroll Progress Bar --- */
+        window.addEventListener("scroll", () => {
+            const winScroll = document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("scrollProgress").style.width = scrolled + "%";
+        });
+
+        /* --- Mobile Navigation Dropdown --- */
+        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+        
+        mobileMenuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+
+        // Close dropdown when a link is clicked
+        document.querySelectorAll(".mobile-link").forEach(link => {
+            link.addEventListener("click", () => {
+                mobileMenu.classList.add("hidden");
+            });
+        });
+
+        /* --- Intersection Observer for Timeline Animation --- */
+        const timelineItems = document.querySelectorAll(".timeline-item");
+        
+        const timelineObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove("opacity-0", "translate-x-10");
+                    entry.target.classList.add("opacity-100", "translate-x-0");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15
+        });
+
+        timelineItems.forEach(item => {
+            timelineObserver.observe(item);
+        });
+
+        /* --- Count-Up Animation for Achievements --- */
+        function animateValue(obj, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        const statsSection = document.getElementById("metrics");
+        let animatedStats = false;
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !animatedStats) {
+                    animateValue(document.getElementById("countLeetCode"), 0, 120, 1500);
+                    animateValue(document.getElementById("countAccuracy"), 0, 100, 1200);
+                    animateValue(document.getElementById("countAwards"), 0, 3, 1000);
+                    
+                    // Add suffix values
+                    setTimeout(() => {
+                        document.getElementById("countLeetCode").innerHTML += "+";
+                        document.getElementById("countAccuracy").innerHTML += "%";
+                        document.getElementById("countAwards").innerHTML += "+";
+                    }, 1600);
+
+                    animatedStats = true;
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+
+        statsObserver.observe(statsSection);
+    </script>
+</body>
+</html>
